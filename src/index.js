@@ -14,9 +14,13 @@ import axios from 'axios';
 // import reducers
 import currentMovie from './reducers/currentMovie.reducer';
 
+// import sagas
+import getCurrentMovie from './Sagas/getCurrentMovie/getCurrentMovie';
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('GET_CURRENT_MOVIE', getCurrentMovie);
 }
 
 function* fetchAllMovies() {

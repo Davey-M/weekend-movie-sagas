@@ -1,5 +1,6 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // mui imports
 import { Button } from '@mui/material';
@@ -16,12 +17,16 @@ function Details() {
         history.push('/');
     };
 
+    useEffect(() => {
+        dispatch({ type: 'GET_CURRENT_MOVIE', payload: id });
+    }, []);
+
     return (
         <>
             <Button variant='contained' onClick={goBack}>
                 Home
             </Button>
-            <h1>Details for {JSON.stringify(movie)}</h1>
+            <h1>Details for {JSON.stringify(movie[0])}</h1>
         </>
     );
 }

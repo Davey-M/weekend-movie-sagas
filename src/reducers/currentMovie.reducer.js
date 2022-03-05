@@ -1,4 +1,4 @@
-const currentMovie = (state = {}, action) => {
+const currentMovie = (state = [], action) => {
 
     if (action.type === 'SET_CURRENT_MOVIE') {
         return action.payload;
