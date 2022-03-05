@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 // mui imports
-import { Button } from '@mui/material';
+import { Button, useStepContext } from '@mui/material';
 
 function Details() {
     const history = useHistory();
@@ -14,6 +14,7 @@ function Details() {
 
     // current movie is an array to deal with the multiple genres
     const movie = useSelector((store) => store.currentMovie);
+    const genres = useSelector((store) => store.genres);
 
     // go back to homepage
     // this will eventually be replaced by a header with nav bar
@@ -40,7 +41,11 @@ function Details() {
                         />
                         <p>{movie[0].description}</p>
                     </div>
-                    <div className='genre-footer'></div>
+                    <div className='genre-footer'>
+                        {genres.map((item, index) => {
+                            return <p key={index}>{item}</p>;
+                        })}
+                    </div>
                 </>
             )}
         </>
