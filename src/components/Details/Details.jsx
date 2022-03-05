@@ -43,7 +43,7 @@ function Details() {
                     </div>
                     <div className='genre-footer'>
                         {genres.map((item, index) => {
-                            return <p key={index}>{item}</p>;
+                            return <p key={index}>{item.name}</p>;
                         })}
                     </div>
                 </>
