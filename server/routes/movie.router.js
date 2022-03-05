@@ -19,16 +19,20 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = req.params.id;
 
+    // const sqlText = `
+    // SELECT 
+    //     "movies".*,
+    //     "genres"."name" as "genre"
+    // FROM "movies"
+    // JOIN "movies_genres"
+    //     ON "movies"."id" = "movies_genres"."movie_id"
+    // JOIN "genres"
+    //     ON "movies_genres"."genre_id" = "genres"."id"
+    // WHERE "movies"."id" = $1;
+    // `
     const sqlText = `
-    SELECT 
-        "movies".*,
-        "genres"."name" as "Genre"
-    FROM "movies"
-    JOIN "movies_genres"
-        ON "movies"."id" = "movies_genres"."movie_id"
-    JOIN "genres"
-        ON "movies_genres"."genre_id" = "genres"."id"
-    WHERE "movies"."id" = $1;
+        SELECT * FROM "movies"
+        WHERE "movies"."id" = $1;
     `
 
     const sqlOptions = [id];
