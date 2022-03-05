@@ -2,8 +2,10 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
+import './Details.css';
+
 // mui imports
-import { Button, useStepContext } from '@mui/material';
+import { Button, Paper, Chip } from '@mui/material';
 
 function Details() {
     const history = useHistory();
@@ -31,23 +33,34 @@ function Details() {
             <Button variant='contained' onClick={goBack}>
                 Home
             </Button>
-            {movie[0] && (
-                <>
-                    <h1>{movie[0].title}</h1>
-                    <div className='about-container'>
-                        <img
-                            src={movie[0].poster}
-                            alt={movie[0].title + ' Poster'}
-                        />
-                        <p>{movie[0].description}</p>
-                    </div>
-                    <div className='genre-footer'>
-                        {genres.map((item, index) => {
-                            return <p key={index}>{item.name}</p>;
-                        })}
-                    </div>
-                </>
-            )}
+            <div className='detail-container'>
+                {movie[0] && (
+                    <>
+                        <h1>{movie[0].title}</h1>
+                        <Paper className='container-paper'>
+                            <div className='about-container'>
+                                <img
+                                    src={movie[0].poster}
+                                    alt={movie[0].title + ' Poster'}
+                                />
+                                <p>{movie[0].description}</p>
+                            </div>
+                        </Paper>
+                        <div className='genre-footer'>
+                            <p>Genres:</p>
+                            {genres.map((item, index) => {
+                                return (
+                                    <Chip
+                                        key={index}
+                                        variant='filled'
+                                        label={item.name}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </>
+                )}
+            </div>
         </>
     );
 }

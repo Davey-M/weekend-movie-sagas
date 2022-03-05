@@ -1,0 +1,35 @@
+.detail-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 0px 10px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px;
+}
+
+.about-container p {
+    text-align: justify;
+}
+
+.container-paper {
+    padding: 10px;
+}
+
+.genre-footer {
+    margin: 10px 0px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .about-container {
+        display: grid;
+        grid-template-rows: max-content max-content;
+        grid-template-columns: auto;
+        gap: 10px;
+    }
+}
