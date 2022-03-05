@@ -13,11 +13,6 @@ function Details() {
     const movie = useSelector((store) => store.currentMovie);
 
     const goBack = () => {
-        // reset the current movie
-        dispatch({
-            type: 'SET_CURRENT_MOVIE',
-            payload: {},
-        });
         history.push('/');
     };
 
