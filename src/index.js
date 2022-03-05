@@ -11,6 +11,9 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
+// import reducers
+import currentMovie from './reducers/currentMovie.reducer';
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
@@ -57,6 +60,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        currentMovie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
