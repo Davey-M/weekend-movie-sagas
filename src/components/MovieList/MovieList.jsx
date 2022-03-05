@@ -43,7 +43,11 @@ function MovieList() {
             // reset the current movie if we are on the movieList view
             dispatch({
                 type: 'SET_CURRENT_MOVIE',
-                payload: {},
+                payload: [],
+            });
+            dispatch({
+                type: 'SET_GENRES',
+                payload: [],
             });
         }
     }, [location]);
