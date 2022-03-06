@@ -15,7 +15,7 @@ import axios from 'axios';
 import currentMovie from './reducers/currentMovie.reducer';
 
 // import sagas
-import getCurrentMovie from './Sagas/getCurrentMovie/getCurrentMovie';
+import getCurrentMovie from './Sagas/getCurrentMovie';
 
 // Create the rootSaga generator function
 function* rootSaga() {
