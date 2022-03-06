@@ -32,9 +32,9 @@ function Details() {
 
     return (
         <>
-            <Button variant='contained' onClick={goBack}>
+            {/* <Button variant='contained' onClick={goBack}>
                 Home
-            </Button>
+            </Button> */}
             <div className='detail-container'>
                 {movie[0] && (
                     <>

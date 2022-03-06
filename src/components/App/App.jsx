@@ -4,12 +4,14 @@ import MovieList from '../MovieList/MovieList';
 
 // component imports
 import Details from '../Details/Details';
+import NavBar from '../NavBar/NavBar';
 
 function App() {
     return (
         <div className='App'>
-            <h1>The Movies Saga!</h1>
+            {/* <h1>The Movies Saga!</h1> */}
             <Router>
+                <NavBar />
                 <Switch>
                     <Route path='/details/:id'>
                         <Details />
