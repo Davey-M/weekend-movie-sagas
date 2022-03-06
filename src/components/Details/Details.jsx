@@ -70,7 +70,10 @@ function Details() {
                     <img
                         src={movie[0].poster}
                         alt={movie[0].title + ' Poster'}
-                        width='400'
+                        style={{
+                            width: '30%',
+                            minWidth: '300px',
+                        }}
                     />
                 )}
             </Backdrop>
