@@ -7,6 +7,7 @@ import Details from '../Details/Details';
 import NavBar from '../NavBar/NavBar';
 import MoviesGenres from '../MoviesGenres/MoviesGenres';
 import GenreList from '../GenreList/GenreList';
+import MovieForm from '../MovieForm/MovieForm';
 
 function App() {
     return (
@@ -23,6 +24,9 @@ function App() {
                     </Route>
                     <Route path='/genres/:id' exact>
                         <MoviesGenres />
+                    </Route>
+                    <Route path='/add-movie' exact>
+                        <MovieForm />
                     </Route>
                     <Route path='/' exact>
                         <MovieList />

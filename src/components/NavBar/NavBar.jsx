@@ -18,11 +18,13 @@ function NavBar() {
                 }}
             >
                 <ButtonGroup variant='text'>
-                    <Button onClick={handleClick}>Home</Button>
+                    <Button onClick={() => history.push('/')}>Home</Button>
                     <Button onClick={() => history.push('/genres')}>
                         Genres
                     </Button>
-                    <Button>Add Movie</Button>
+                    <Button onClick={() => history.push('/add-movie')}>
+                        Add Movie
+                    </Button>
                     <Button>Add Genre</Button>
                 </ButtonGroup>
             </div>
