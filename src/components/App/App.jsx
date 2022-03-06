@@ -6,6 +6,7 @@ import MovieList from '../MovieList/MovieList';
 import Details from '../Details/Details';
 import NavBar from '../NavBar/NavBar';
 import MoviesGenres from '../MoviesGenres/MoviesGenres';
+import GenreList from '../GenreList/GenreList';
 
 function App() {
     return (
@@ -14,10 +15,13 @@ function App() {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route path='/details/:id'>
+                    <Route path='/details/:id' exact>
                         <Details />
                     </Route>
-                    <Route path='/genres/:id'>
+                    <Route path='/genres' exact>
+                        <GenreList />
+                    </Route>
+                    <Route path='/genres/:id' exact>
                         <MoviesGenres />
                     </Route>
                     <Route path='/' exact>

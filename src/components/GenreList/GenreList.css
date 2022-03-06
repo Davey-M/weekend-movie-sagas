@@ -1,0 +1,8 @@
+.genre-container {
+    display: flex;
+    width: max-content;
+    max-width: 50%;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: auto;
+}

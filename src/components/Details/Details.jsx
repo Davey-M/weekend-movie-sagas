@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 
 import './Details.css';
 
+// component imports
+import GenreChip from '../GenreChip/GenreChip';
+
 // mui imports
-import { Button, Paper, Chip, Backdrop } from '@mui/material';
+import { Paper, Chip, Backdrop } from '@mui/material';
 
 function Details() {
     const history = useHistory();
@@ -53,13 +56,7 @@ function Details() {
                         <div className='genre-footer'>
                             <p>Genres:</p>
                             {genres.map((item, index) => {
-                                return (
-                                    <Chip
-                                        key={index}
-                                        variant='filled'
-                                        label={item.name}
-                                    />
-                                );
+                                return <GenreChip key={index} {...item} />;
                             })}
                         </div>
                     </>
