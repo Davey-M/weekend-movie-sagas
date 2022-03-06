@@ -5,6 +5,7 @@ import MovieList from '../MovieList/MovieList';
 // component imports
 import Details from '../Details/Details';
 import NavBar from '../NavBar/NavBar';
+import MoviesGenres from '../MoviesGenres/MoviesGenres';
 
 function App() {
     return (
@@ -16,8 +17,14 @@ function App() {
                     <Route path='/details/:id'>
                         <Details />
                     </Route>
-                    <Route path='/'>
+                    <Route path='/genres/:id'>
+                        <MoviesGenres />
+                    </Route>
+                    <Route path='/' exact>
                         <MovieList />
+                    </Route>
+                    <Route path='*'>
+                        <h1>Error 404: Page Not Found</h1>
                     </Route>
                 </Switch>
 
