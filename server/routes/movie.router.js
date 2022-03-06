@@ -49,6 +49,8 @@ router.get('/:id', (req, res) => {
 
 router.get('/genre/:id', (req, res) => {
 
+    const id = req.params.id;
+
     const sqlText = `
         SELECT * FROM "movies"
         JOIN "movies_genres"

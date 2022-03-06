@@ -54,7 +54,11 @@ function Details() {
                             <p>Genres:</p>
                             {genres.map((item, index) => {
                                 const handleGenreNavigate = () => {
-                                    history.push(`/genres/${item.id}`);
+                                    dispatch({
+                                        type: 'SET_CURRENT_GENRE',
+                                        payload: item.name,
+                                    });
+                                    history.push(`/genres/${item.genre_id}`);
                                 };
 
                                 return (

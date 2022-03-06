@@ -1,11 +1,15 @@
 import { useHistory } from 'react-router-dom';
 import './MovieCard.css';
 
-function MovieCard({ title, poster, id }) {
+function MovieCard({ title, poster, id, movie_id }) {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push(`/details/${id}`);
+        if (movie_id) {
+            history.push(`/details/${movie_id}`);
+        } else {
+            history.push(`/details/${id}`);
+        }
     };
 
     return (
