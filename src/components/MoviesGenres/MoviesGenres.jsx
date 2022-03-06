@@ -29,8 +29,7 @@ function MoviesGenres() {
     };
 
     useEffect(() => {
-        updateWidth();
-
+        // get all movies of the genre from the server
         axios
             .get(`/api/movie/genre/${id}`)
             .then((response) => {
@@ -43,6 +42,8 @@ function MoviesGenres() {
                 console.error('Error in MoviesGenres()', err);
             });
 
+        // setup the movie gallery resizing
+        updateWidth();
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
     }, []);
