@@ -2,11 +2,13 @@ import { Select, TextField, Button, MenuItem, Menu } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import './MovieForm.css';
 
 function MovieForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -17,6 +19,25 @@ function MovieForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const postData = {
+            title,
+            description,
+            poster,
+            genre_id: genre,
+        };
+
+        axios
+            .post('/api/movie', postData)
+            .then((response) => {
+                setTitle('');
+                setDescription('');
+                setPoster('');
+                setGenre('');
+            })
+            .catch((err) => {
+                console.error('Error in post MovieForm()', err);
+            });
     };
 
     useEffect(() => {
