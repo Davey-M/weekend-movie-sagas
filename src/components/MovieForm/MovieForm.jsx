@@ -104,6 +104,11 @@ function MovieForm() {
                     </Button>
                 </div>
             </form>
+            <div>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                <img src={poster} alt='' style={{ width: '250px' }} />
+            </div>
         </>
     );
 }
