@@ -2,6 +2,23 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+router.get('/', (req, res) => {
+
+    const sqlText = `
+        SELECT * FROM "genres" ORDER BY "id" ASC;
+    `
+
+    pool.query(sqlText)
+        .then(response => {
+            res.send(response.rows);
+        })
+        .catch(err => {
+            console.error('Error in get one movie router', err);
+            res.sendStatus(500);
+        })
+
+})
+
 router.get('/:id', (req, res) => {
 
     const id = req.params.id;
