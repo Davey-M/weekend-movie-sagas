@@ -1,15 +1,17 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Details.css';
 
 // mui imports
-import { Button, Paper, Chip } from '@mui/material';
+import { Button, Paper, Chip, Backdrop } from '@mui/material';
 
 function Details() {
     const history = useHistory();
     const dispatch = useDispatch();
+
+    const [showPoster, setShowPoster] = useState(false);
 
     // id of the current movie
     const id = useParams().id;
@@ -42,6 +44,8 @@ function Details() {
                                 <img
                                     src={movie[0].poster}
                                     alt={movie[0].title + ' Poster'}
+                                    width='200'
+                                    onClick={() => setShowPoster(true)}
                                 />
                                 <p>{movie[0].description}</p>
                             </div>
@@ -61,6 +65,15 @@ function Details() {
                     </>
                 )}
             </div>
+            <Backdrop open={showPoster} onClick={() => setShowPoster(false)}>
+                {movie[0] && (
+                    <img
+                        src={movie[0].poster}
+                        alt={movie[0].title + ' Poster'}
+                        width='400'
+                    />
+                )}
+            </Backdrop>
         </>
     );
 }
