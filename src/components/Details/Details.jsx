@@ -53,11 +53,16 @@ function Details() {
                         <div className='genre-footer'>
                             <p>Genres:</p>
                             {genres.map((item, index) => {
+                                const handleGenreNavigate = () => {
+                                    history.push(`/genres/${item.id}`);
+                                };
+
                                 return (
                                     <Chip
                                         key={index}
                                         variant='filled'
                                         label={item.name}
+                                        onClick={handleGenreNavigate}
                                     />
                                 );
                             })}
