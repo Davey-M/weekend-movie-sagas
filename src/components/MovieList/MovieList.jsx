@@ -54,7 +54,7 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
+            {/* <h1>MovieList</h1> */}
             <section className='movies' ref={movieSection}>
                 {movies.map((movie) => {
                     // MovieCard takes two props poster and title
