@@ -27,7 +27,7 @@ function GenreList() {
 
     return (
         <>
-            <p>Select Movies by Genre</p>
+            <h1>Genres</h1>
             <div className='genre-container'>
                 {genres.map((item, index) => {
                     return <GenreChip key={index} {...item} />;

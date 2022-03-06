@@ -5,10 +5,6 @@ import { useHistory } from 'react-router-dom';
 function NavBar() {
     const history = useHistory();
 
-    const handleClick = () => {
-        history.push('/');
-    };
-
     return (
         <>
             <div
@@ -25,7 +21,6 @@ function NavBar() {
                     <Button onClick={() => history.push('/add-movie')}>
                         Add Movie
                     </Button>
-                    <Button>Add Genre</Button>
                 </ButtonGroup>
             </div>
         </>
