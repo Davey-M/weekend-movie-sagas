@@ -1,11 +1,37 @@
-import { Select, TextField, Button, MenuItem } from '@mui/material';
+import { Select, TextField, Button, MenuItem, Menu } from '@mui/material';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './MovieForm.css';
 
 function MovieForm() {
+    const dispatch = useDispatch();
+
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [poster, setPoster] = useState('');
+    const [genre, setGenre] = useState(0);
+
+    const genres = useSelector((store) => store.genres);
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+
+    useEffect(() => {
+        axios
+            .get('/api/genre')
+            .then((response) => {
+                dispatch({
+                    type: 'SET_GENRES',
+                    payload: response.data,
+                });
+            })
+            .catch((err) => {
+                console.error('Error in MovieForm()', err);
+            });
+    }, []);
 
     return (
         <>
@@ -16,6 +42,8 @@ function MovieForm() {
                     variant='outlined'
                     required
                     className='form-field'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <TextField
                     label='Movie Description'
@@ -23,12 +51,16 @@ function MovieForm() {
                     rows={5}
                     className='form-field'
                     required
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
                 <TextField
                     label='Movie Poster Link'
                     variant='outlined'
                     className='form-field'
                     required
+                    value={poster}
+                    onChange={(e) => setPoster(e.target.value)}
                 />
                 <div className='button-container'>
                     <p>Select Genre</p>
@@ -37,8 +69,14 @@ function MovieForm() {
                         labelId='genre-label'
                         required
                         className='select'
+                        value={genre}
+                        onChange={(e) => setGenre(e.target.value)}
                     >
-                        <MenuItem value={1}>one</MenuItem>
+                        {genres.map((item) => {
+                            return (
+                                <MenuItem value={item.id}>{item.name}</MenuItem>
+                            );
+                        })}
                     </Select>
                     <Button type='submit' variant='contained'>
                         Add Movie
