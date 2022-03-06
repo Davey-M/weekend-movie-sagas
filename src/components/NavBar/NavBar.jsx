@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { ButtonGroup, Button } from '@mui/material';
 
 import { useHistory } from 'react-router-dom';
 
@@ -17,15 +17,14 @@ function NavBar() {
                     padding: '5px',
                 }}
             >
-                <Button variant='outlined' onClick={handleClick}>
-                    Home
-                </Button>
-                <Button
-                    variant='outlined'
-                    onClick={() => history.push('/genres')}
-                >
-                    Genres
-                </Button>
+                <ButtonGroup variant='text'>
+                    <Button onClick={handleClick}>Home</Button>
+                    <Button onClick={() => history.push('/genres')}>
+                        Genres
+                    </Button>
+                    <Button>Add Movie</Button>
+                    <Button>Add Genre</Button>
+                </ButtonGroup>
             </div>
         </>
     );
