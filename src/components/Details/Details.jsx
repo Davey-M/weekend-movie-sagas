@@ -71,8 +71,7 @@ function Details() {
                         src={movie[0].poster}
                         alt={movie[0].title + ' Poster'}
                         style={{
-                            width: '30%',
-                            minWidth: '300px',
+                            height: '80vmin',
                         }}
                     />
                 )}
