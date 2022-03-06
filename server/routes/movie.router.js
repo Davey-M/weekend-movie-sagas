@@ -52,9 +52,11 @@ router.get('/genre/:id', (req, res) => {
     const id = req.params.id;
 
     const sqlText = `
-        SELECT * FROM "movies"
+        SELECT "movies".*, "genres"."name" AS "genre_name" FROM "movies"
         JOIN "movies_genres"
             ON "movies_genres"."movie_id" = "movies"."id"
+        JOIN "genres"
+            ON "movies_genres"."genre_id" = "genres"."id"
         WHERE "movies_genres"."genre_id" = $1;
     `
 

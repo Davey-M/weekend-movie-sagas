@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // component imports
@@ -8,6 +8,7 @@ import MovieCard from '../MovieCard/MovieCard';
 
 function MoviesGenres() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const id = useParams().id;
 
@@ -15,7 +16,6 @@ function MoviesGenres() {
 
     // store movies in a redux reducer
     const movies = useSelector((store) => store.movies);
-    const currentGenre = useSelector((store) => store.selectedGenre);
 
     // update the size of the movie selection based off its contents
     const updateWidth = () => {
@@ -50,11 +50,11 @@ function MoviesGenres() {
 
     return (
         <>
-            <h1>Genre: {currentGenre}</h1>
+            {movies[0] && <h1>Genre: {movies[0].genre_name}</h1>}
             <section className='movies' ref={movieSection}>
-                {movies.map((movie) => {
+                {movies.map((movie, index) => {
                     // MovieCard takes two props poster and title
-                    return <MovieCard key={movie.movie_id} {...movie} />;
+                    return <MovieCard key={index} {...movie} />;
                 })}
             </section>
         </>
