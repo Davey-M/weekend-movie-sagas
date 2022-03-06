@@ -45,4 +45,24 @@ router.get('/:id', (req, res) => {
         })
 });
 
+router.post('/', (req, res) => {
+    const name = req.body.name;
+
+    const sqlText = `
+        INSERT INTO "genres" ("name")
+        VALUES ($1)
+    `
+
+    const sqlOptions = [name];
+
+    pool.query(sqlText, sqlOptions)
+        .then(response => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            console.error('Error in genre router', err);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;
