@@ -20,6 +20,12 @@ function NavBar() {
                 <Button variant='outlined' onClick={handleClick}>
                     Home
                 </Button>
+                <Button
+                    variant='outlined'
+                    onClick={() => history.push('/genres')}
+                >
+                    Genres
+                </Button>
             </div>
         </>
     );
